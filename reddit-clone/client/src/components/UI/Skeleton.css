@@ -1,0 +1,38 @@
+.skeleton {
+  background: linear-gradient(90deg, #e8eaed 25%, #f5f5f5 50%, #e8eaed 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+  display: block;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.post-skeleton-card {
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+}
+
+.post-skeleton-vote {
+  min-width: 40px;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+}
+
+.post-skeleton-content {
+  flex: 1;
+  padding: 12px 16px;
+}
+
+.comment-skeleton {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}

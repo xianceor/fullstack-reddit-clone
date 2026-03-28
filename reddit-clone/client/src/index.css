@@ -1,0 +1,154 @@
+/* ── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --orange:       #FF4500;
+  --orange-hover: #e03d00;
+  --blue:         #0079D3;
+  --blue-hover:   #006cbf;
+  --downvote:     #7193FF;
+  --bg:           #DAE0E6;
+  --surface:      #FFFFFF;
+  --surface-hover:#f6f7f8;
+  --border:       #EDEFF1;
+  --text-primary: #1c1c1c;
+  --text-secondary:#878A8C;
+  --radius:       4px;
+  --shadow:       0 1px 3px rgba(0,0,0,.08);
+  --font:         'IBM Plex Sans', sans-serif;
+  --mono:         'IBM Plex Mono', monospace;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a    { color: inherit; text-decoration: none; }
+button, input, textarea, select { font-family: var(--font); }
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c8cccf; border-radius: 3px; }
+
+/* ── Shared layout helpers ─────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 20px; border: none;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap; text-decoration: none; font-family: var(--font);
+}
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.btn-primary   { background: var(--orange); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--orange-hover); }
+
+.btn-secondary { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
+.btn-secondary:hover:not(:disabled) { background: rgba(0,121,211,.06); }
+
+.btn-ghost { background: transparent; color: var(--text-secondary); border: none; }
+.btn-ghost:hover:not(:disabled) { background: var(--surface-hover); color: var(--text-primary); }
+
+.btn-join   { background: var(--blue); color: #fff; }
+.btn-join:hover:not(:disabled) { background: var(--blue-hover); }
+
+.btn-joined { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); }
+.btn-joined:hover:not(:disabled) { color: var(--orange); border-color: var(--orange); background: rgba(255,69,0,.05); }
+
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+
+/* ── Forms ─────────────────────────────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+
+.form-group label {
+  font-size: 11px; font-weight: 700; color: var(--text-secondary);
+  text-transform: uppercase; letter-spacing: .5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px; background: var(--surface);
+  color: var(--text-primary);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(0,121,211,.12);
+}
+
+.form-group textarea { resize: vertical; min-height: 90px; }
+
+/* ── Shared feed patterns ──────────────────────────────────────────────────── */
+.sort-bar { display: flex; align-items: center; gap: 4px; padding: 8px 12px; }
+.sort-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 20px; border: none;
+  font-size: 14px; font-weight: 700; color: var(--text-secondary);
+  background: transparent; cursor: pointer; transition: all .15s;
+  font-family: var(--font);
+}
+.sort-btn:hover  { background: var(--surface-hover); color: var(--text-primary); }
+.sort-btn.active { background: var(--surface-hover); color: var(--text-primary); }
+
+.feed-posts  { display: flex; flex-direction: column; gap: 10px; }
+
+.pagination {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; padding: 16px;
+}
+.page-info { font-size: 14px; color: var(--text-secondary); }
+
+/* ── Sidebar reusable ──────────────────────────────────────────────────────── */
+.sidebar-section { overflow: hidden; }
+.sidebar-section-title {
+  padding: 12px 16px 8px;
+  font-size: 14px; font-weight: 700;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Post / comment shared ─────────────────────────────────────────────────── */
+.post-meta       { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; font-size: 12px; margin-bottom: 6px; }
+.post-subreddit  { font-weight: 700; color: var(--text-primary); }
+.post-subreddit:hover { color: var(--blue); text-decoration: underline; }
+.post-meta-sep   { color: var(--text-secondary); }
+.post-meta-muted { color: var(--text-secondary); }
+.post-author-link { color: var(--text-secondary); font-weight: 600; }
+.post-author-link:hover { color: var(--blue); text-decoration: underline; }
+.post-flair {
+  display: inline-block; padding: 2px 8px; margin-bottom: 6px;
+  background: rgba(0,121,211,.1); color: var(--blue);
+  border-radius: 12px; font-size: 11px; font-weight: 700;
+}
+.post-link-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--blue);
+  background: rgba(0,121,211,.06); border: 1px solid rgba(0,121,211,.15);
+  padding: 3px 10px; border-radius: 12px; margin-top: 8px;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  transition: background .12s;
+}
+.post-link-chip:hover { background: rgba(0,121,211,.12); }
