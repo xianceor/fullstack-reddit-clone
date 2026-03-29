@@ -62,7 +62,7 @@ const Home = () => {
           <div className="feed-loading">
             {[1,2,3,4,5].map(i => <div key={i} className="post-skeleton card"/>)}
           </div>
-        ) : posts.length === 0 ? (
+        ) : (posts?.length === 0) ? (
           <div className="feed-empty card">
             <h3>No posts yet</h3>
             <p>Be the first to post something!</p>
@@ -70,7 +70,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="feed-posts">
-            {posts.map(post => (
+            {posts?.map(post => (
               <PostCard key={post._id} post={post} onDelete={handleDelete} />
             ))}
           </div>
